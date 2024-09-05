@@ -8,8 +8,8 @@ import (
 )
 
 type application struct {
-	infoLog        *log.Logger
-	errorLog       *log.Logger
-	posts          *models.PostModel
-	templateCache  map[string]*template.Template
+	infoLog       *log.Logger
+	errorLog      *log.Logger
+	posts         *models.PostModel
+	templateCache map[string]*template.Template
 }

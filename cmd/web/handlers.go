@@ -61,7 +61,7 @@ func (app *application) postView(w http.ResponseWriter, r *http.Request) {
 	}
 
 	app.render(w, http.StatusOK, "view", &templateData{
-		Post:  post,
+		Post: post,
 	})
 }
 

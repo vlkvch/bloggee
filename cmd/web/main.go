@@ -33,7 +33,7 @@ func main() {
 		posts: &models.PostModel{
 			Dir: os.DirFS(*dir),
 		},
-		templateCache:  templateCache,
+		templateCache: templateCache,
 	}
 
 	tlsConfig := &tls.Config{
