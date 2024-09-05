@@ -1,0 +1,28 @@
+version: '3'
+
+env:
+  PROG: bloggee
+  SRCDIR: ./cmd/web
+  BINDIR: ./bin
+
+tasks:
+  default:
+    deps: [run]
+
+  build:
+    cmds:
+      - go build -o $BINDIR/$PROG $SRCDIR
+    sources:
+      - ./**/*.go
+    generates:
+      - "$BINDIR/$PROG"
+
+  run:
+    deps: [build]
+    cmds:
+      - "$BINDIR/$PROG"
+
+  clean:
+    cmds:
+      - rm $BINDIR/$PROG
+      - rmdir $BINDIR

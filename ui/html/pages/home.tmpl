@@ -1,0 +1,15 @@
+{{define "title"}}Home{{end}}
+
+{{define "main"}}
+    {{if .Posts}}
+        <div>
+            <ul>
+                {{range .Posts}}
+                    <li><a href="/posts/{{.ID}}">{{.Title}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+    {{else}}
+        <p>Nothing to see here yet!</p>
+    {{end}}
+{{end}}

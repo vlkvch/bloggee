@@ -1,0 +1,7 @@
+{{define "title"}}{{.Post.Title}}{{end}}
+
+{{define "main"}}
+    {{with .Post}}
+        <div class="content">{{.Content}}</div>
+    {{end}}
+{{end}}
