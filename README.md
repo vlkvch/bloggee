@@ -20,7 +20,7 @@ $ go run /usr/local/go/src/crypto/tls/generate_cert.go --rsa-bits=2048 --host=lo
 
 ### Running the app
 
-To run the app straight away, you can use Task:
+To run the app straight away, you can use [Task](https://taskfile.dev/):
 
 ```
 $ task run
@@ -36,6 +36,12 @@ To simply build a binary file:
 
 ```
 $ task
+```
+
+Alternatively, you can use the native Go tooling:
+
+```
+$ go build -o ./bin/bloggee ./cmd/web
 ```
 
 ## License
