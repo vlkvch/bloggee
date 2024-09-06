@@ -15,12 +15,12 @@ tasks:
     sources:
       - ./**/*.go
     generates:
-      - "$BINDIR/$PROG"
+      - $BINDIR/$PROG
 
   run:
     deps: [build]
     cmds:
-      - "$BINDIR/$PROG"
+      - $BINDIR/$PROG {{.CLI_ARGS}}
 
   clean:
     cmds:
