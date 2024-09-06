@@ -23,7 +23,7 @@ $ go run /usr/local/go/src/crypto/tls/generate_cert.go --rsa-bits=2048 --host=lo
 To run the app straight away, you can use [Task](https://taskfile.dev/):
 
 ```
-$ task run
+$ task
 ```
 
 If you'd like to change the directory for your posts:
@@ -35,7 +35,7 @@ $ task run -- -dir ./posts
 To simply build a binary file:
 
 ```
-$ task
+$ task build
 ```
 
 Alternatively, you can use the native Go tooling:
