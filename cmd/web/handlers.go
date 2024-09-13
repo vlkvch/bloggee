@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/vlkvch/bloggee/internal/models"
 )
 
@@ -47,7 +46,7 @@ func (app *application) about(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) postView(w http.ResponseWriter, r *http.Request) {
-	id := chi.URLParam(r, "id")
+	id := r.PathValue("id")
 
 	post, err := app.posts.Get(id)
 	if err != nil {
@@ -66,7 +65,7 @@ func (app *application) postView(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) postFiles(w http.ResponseWriter, r *http.Request) {
-	id := chi.URLParam(r, "id")
+	id := r.PathValue("id")
 
 	postDir := filepath.Join(fmt.Sprint(app.posts.Dir), id)
 

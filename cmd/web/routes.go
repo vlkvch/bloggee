@@ -3,23 +3,21 @@ package main
 import (
 	"net/http"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
 	"github.com/vlkvch/bloggee/ui"
 )
 
 func (app *application) routes() http.Handler {
-	router := chi.NewRouter()
+	mux := http.NewServeMux()
 
 	fileServer := http.FileServer(http.FS(ui.Files))
-	router.Handle("/static/*", fileServer)
+	mux.Handle("GET /static/*", fileServer)
 
-	router.Get("/", app.home)
-	router.Get("/about", app.about)
-	router.Get("/archive", app.archive)
+	mux.HandleFunc("GET /{$}", app.home)
+	mux.HandleFunc("GET /about", app.about)
+	mux.HandleFunc("GET /archive", app.archive)
 
-	router.Get("/posts/{id}", app.postView)
-	router.Get("/posts/{id}/*", app.postFiles)
+	mux.HandleFunc("GET /posts/{id}", app.postView)
+	mux.HandleFunc("GET /posts/{id}/*", app.postFiles)
 
-	return app.recoverPanic(app.logRequest(middleware.StripSlashes(secureHeaders(router))))
+	return app.recoverPanic(app.logRequest(stripSlashes(secureHeaders(mux))))
 }
